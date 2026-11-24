@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e9">
+  <meta name="description" content="Watetera Sadati is a full-stack developer and cybersecurity specialist building useful, secure software and systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Watetera Sadati — Full-Stack Developer & Security Specialist">
+  <meta property="og:description" content="Building useful software with security in mind, from interface to infrastructure.">
+  <title>Watetera Sadati — Full-Stack Developer & Security Specialist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f3f0e9;
+      --paper-light: #faf8f3;
+      --ink: #171717;
+      --muted: #69655e;
+      --line: #d8d2c7;
+      --rust: #c64b37;
+      --rust-dark: #9f3628;
+      --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      --sans: "IBM Plex Sans", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --max: 1160px;
+      --nav-menu-top: 72px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; overflow-x: clip; }
+    body { max-width: 100%; margin: 0; color: var(--ink); background: var(--paper); font-family: var(--sans); font-size: 16px; line-height: 1.65; }
+    a { color: inherit; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--rust); outline-offset: 4px; }
+    .wrap { width: min(var(--max), calc(100% - 64px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); }
+    .eyebrow { display: flex; gap: 11px; align-items: center; color: var(--rust-dark); font: 500 12px/1.4 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { width: 28px; height: 1px; background: var(--rust); content: ""; }
+    .site-header { position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(23,23,23,.14); background: var(--paper); }
+    .nav-row { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-size: 19px; font-weight: 700; letter-spacing: -.04em; white-space: nowrap; }
+    .brand b { color: var(--rust); }
+    .nav-links { display: flex; align-items: center; gap: clamp(20px, 3.4vw, 46px); margin: 0; padding: 0; list-style: none; }
+    .nav-links a { position: relative; padding: 8px 0; color: var(--muted); text-decoration: none; font: 500 11px/1 var(--mono); letter-spacing: .09em; text-transform: uppercase; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--rust-dark); }
+    .menu-close { display: none; }
+    .nav-cta { display: inline-flex; align-items: center; gap: 10px; min-height: 42px; padding: 0 17px; border-radius: 4px; color: var(--paper-light); background: var(--ink); text-decoration: none; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; transition: background .18s, transform .18s; }
+    .nav-cta:hover { background: var(--rust); transform: translateY(-2px); }
+    .menu-button { display: none; border: 1px solid var(--line); border-radius: 4px; background: transparent; padding: 10px; color: var(--ink); font: 500 11px var(--mono); }
+    .hero { position: relative; overflow: hidden; padding: clamp(72px, 10vw, 132px) 0 96px; border-bottom: 1px solid var(--line); }
+    .hero-grid { display: block; }
+    .hero h1 { max-width: 800px; margin: 25px 0 23px; font-size: clamp(58px, 8.4vw, 112px); line-height: .93; letter-spacing: -.085em; font-weight: 600; }
+    .hero h1 span { color: var(--rust); }
+    .hero-deck { max-width: 580px; margin: 0; color: #48443e; font-size: clamp(17px, 1.7vw, 20px); line-height: 1.62; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 24px; }
+    .tag { padding: 5px 9px; border: 1px solid var(--line); color: var(--muted); font: 11px/1.45 var(--mono); }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 13px; padding: 0 18px; border: 1px solid var(--ink); border-radius: 5px; color: var(--paper-light); background: var(--ink); text-decoration: none; font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; transition: .2s ease; }
+    .button:hover { background: var(--rust); border-color: var(--rust); transform: translateY(-2px); }
+    .button.secondary { color: var(--ink); background: transparent; }
+    .button.secondary:hover { color: var(--paper-light); background: var(--ink); border-color: var(--ink); }
+    .arrow { font-size: 16px; line-height: 0; }
+    .menu-scrim { display: none; }
+    .section { padding: clamp(74px, 9vw, 116px) 0; border-bottom: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: .7fr 1.3fr; gap: 40px; align-items: start; margin-bottom: 48px; }
+    .section-index { padding-top: 6px; color: var(--rust-dark); font: 11px var(--mono); letter-spacing: .1em; }
+    .section-title { max-width: 740px; margin: 0; font-size: clamp(38px, 5.4vw, 68px); line-height: .98; letter-spacing: -.075em; font-weight: 600; }
+    .section-title em { color: var(--rust); font-style: normal; }
+    .about-grid { display: grid; grid-template-columns: 1fr .65fr; gap: clamp(36px, 8vw, 112px); }
+    .about-copy { max-width: 700px; color: #48443e; font-size: 17px; }
+    .about-copy p:first-child { margin-top: 0; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .principles { border-top: 1px solid var(--ink); }
+    .principle { display: grid; grid-template-columns: 34px 1fr; gap: 13px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+    .principle-num { color: var(--rust); font: 11px var(--mono); }
+    .principle h3 { margin: 0 0 3px; font-size: 15px; line-height: 1.4; }
+    .principle p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+    .skill-card { min-height: 240px; padding: 25px 27px 27px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(250,248,243,.42); }
+    .skill-meta { display: flex; align-items: center; justify-content: space-between; margin-bottom: 27px; color: var(--rust-dark); font: 11px var(--mono); }
+    .skill-meta span:last-child { color: var(--muted); }
+    .skill-card h3 { margin: 0 0 12px; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.15; letter-spacing: -.04em; }
+    .skill-card p { max-width: 460px; margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+    .skill-list { color: #35322e; font: 11px/1.8 var(--mono); }
+    .work-note { display: flex; align-items: start; gap: 12px; margin: -13px 0 26px; padding: 13px 15px; border-left: 2px solid var(--rust); background: rgba(198,75,55,.07); color: #51443c; font-size: 13px; }
+    .work-note strong { color: var(--rust-dark); font: 600 10px/1.6 var(--mono); letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+    .project { display: flex; min-height: 300px; flex-direction: column; padding: 24px 26px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(250,248,243,.46); }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--muted); font: 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .project-type { padding: 4px 7px; border: 1px solid var(--line); color: var(--rust-dark); }
+    .project h3 { margin: 28px 0 10px; font-size: clamp(22px, 2.3vw, 29px); line-height: 1.13; letter-spacing: -.05em; }
+    .project p { max-width: 500px; margin: 0; color: #5a554e; font-size: 14px; }
+    .project-foot { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-top: auto; padding-top: 28px; }
+    .stack { display: flex; flex-wrap: wrap; gap: 6px; }
+    .stack span { padding: 4px 7px; border: 1px solid var(--line); color: var(--muted); font: 9px/1.25 var(--mono); }
+    .link-needed { max-width: 125px; color: var(--rust-dark); text-align: right; font: 9px/1.5 var(--mono); text-transform: uppercase; }
+    .contact-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(32px, 8vw, 100px); align-items: start; }
+    .contact-copy { max-width: 560px; color: #514d46; font-size: 17px; }
+    .contact-links { display: grid; gap: 11px; margin-top: 30px; }
+    .contact-link { display: flex; min-width: 0; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--line); text-decoration: none; font-size: 14px; }
+    .contact-link:hover .contact-value { color: var(--rust-dark); }
+    .contact-label { color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
+    .contact-value { min-width: 0; overflow-wrap: anywhere; font-weight: 500; transition: color .2s; }
+    .whatsapp-icon { display: inline-flex; width: 21px; height: 21px; align-items: center; justify-content: center; margin-right: 7px; border-radius: 50%; color: #fff; background: #25d366; vertical-align: -5px; }
+    .whatsapp-icon svg { width: 13px; height: 13px; }
+    .contact-card { padding: clamp(24px, 3.5vw, 36px); border: 1px solid var(--line); border-top: 3px solid var(--rust); background: var(--paper-light); }
+    .contact-card .eyebrow { margin-bottom: 18px; }
+    .contact-card h3 { margin: 0 0 12px; font-size: clamp(24px, 3vw, 32px); line-height: 1.12; letter-spacing: -.045em; }
+    .contact-card p { margin: 0; color: var(--muted); font-size: 14px; }
+    .contact-actions { display: grid; gap: 10px; margin-top: 26px; }
+    .contact-actions .button { width: 100%; justify-content: space-between; border-radius: 4px; }
+    .button.whatsapp-action { color: #176b3c; border-color: #bedac8; background: #f1faf4; }
+    .button.whatsapp-action:hover { color: #fff; border-color: #176b3c; background: #176b3c; }
+    .process-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 34px; border-top: 1px solid var(--ink); border-left: 1px solid var(--line); }
+    .process-step { min-height: 132px; padding: 18px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .process-step span { color: var(--rust-dark); font: 10px var(--mono); }
+    .process-step h3 { margin: 14px 0 5px; font-size: 17px; letter-spacing: -.03em; }
+    .process-step p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .footer { padding: 23px 0; color: var(--muted); font: 10px/1.6 var(--mono); }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--rust-dark); }
+    @media (max-width: 850px) {
+      .site-header { z-index: 40; }
+      .menu-button { display: inline-flex; align-items: center; gap: 8px; }
+      .nav-cta { display: none; }
+      body.menu-open { overflow: hidden; }
+      .menu-scrim.open { position: fixed; inset: var(--nav-menu-top) 0 0; z-index: 30; display: block; width: auto; height: auto; border: 0; background: rgba(23,23,23,.38); }
+      .nav-links { position: fixed; top: var(--nav-menu-top); right: 0; bottom: 0; z-index: 41; display: flex; width: min(84vw, 360px); flex-direction: column; align-items: stretch; gap: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; margin: 0; padding: 64px 28px 28px; border-left: 1px solid var(--line); background: var(--paper-light); box-shadow: -16px 0 36px rgba(23,23,23,.12); transform: translateX(105%); visibility: hidden; transition: transform .28s ease, visibility .28s ease; }
+      .nav-links.open { transform: translateX(0); visibility: visible; }
+      .nav-links li { border-top: 1px solid var(--line); }
+      .nav-links a { display: block; padding: 17px 0; color: var(--ink); font-size: 13px; }
+      .drawer-close { position: absolute; top: 20px; right: 22px; border-top: 0 !important; }
+      .menu-close { display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+      .menu-close span { color: var(--ink); font-size: 23px; line-height: 1; }
+      .hero { padding-top: 80px; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 34px; }
+      .section-head { grid-template-columns: 1fr; gap: 15px; margin-bottom: 34px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 38px)); }
+      .nav-row { min-height: 64px; }
+      .menu-button { display: inline-flex; align-items: center; gap: 8px; }
+      .nav-cta { display: none; }
+      .site-header { z-index: 40; }
+      body.menu-open { overflow: hidden; }
+      :root { --nav-menu-top: 64px; }
+      .menu-scrim.open { position: fixed; inset: var(--nav-menu-top) 0 0; z-index: 30; display: block; width: auto; height: auto; border: 0; background: rgba(23,23,23,.38); }
+      .nav-links { position: fixed; top: var(--nav-menu-top); right: 0; bottom: 0; z-index: 41; display: flex; width: min(84vw, 360px); flex-direction: column; align-items: stretch; gap: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; margin: 0; padding: 64px 28px 28px; border-left: 1px solid var(--line); background: var(--paper-light); box-shadow: -16px 0 36px rgba(23,23,23,.12); transform: translateX(105%); visibility: hidden; transition: transform .28s ease, visibility .28s ease; }
+      .nav-links.open { transform: translateX(0); visibility: visible; }
+      .nav-links li { border-top: 1px solid var(--line); }
+      .nav-links a { display: block; padding: 17px 0; color: var(--ink); font-size: 13px; }
+      .drawer-close { position: absolute; top: 20px; right: 22px; border-top: 0 !important; }
+      .menu-close { display: inline-flex; align-items: center; gap: 8px; border: 0; background: transparent; color: var(--muted); font: 11px var(--mono); text-transform: uppercase; }
+      .menu-close span { color: var(--ink); font-size: 23px; line-height: 1; }
+      .hero { padding: 66px 0 72px; }
+      .hero h1 { font-size: clamp(56px, 15vw, 78px); }
+      .hero-deck { font-size: 16px; }
+      .section { padding: 72px 0; }
+      .skills-grid, .projects, .process-grid { grid-template-columns: 1fr; }
+      .skill-card { min-height: unset; padding: 22px; }
+      .project { min-height: 285px; padding: 21px; }
+      .work-note { display: block; }
+      .work-note strong { display: block; margin-bottom: 4px; }
+      .contact-link { align-items: start; flex-direction: column; gap: 3px; }
+      .footer-row { flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="wrap nav-row" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Watetera Sadati home">W. <b>Sadati</b></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="primary-links"><span aria-hidden="true">☰</span> Menu</button>
+      <ul class="nav-links" id="primary-links">
+        <li class="drawer-close"><button class="menu-close" type="button" aria-label="Close navigation"><span aria-hidden="true">×</span> Close</button></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="nav-cta" href="mailto:wateterasadati@gmail.com">Work with me <span class="arrow" aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <button class="menu-scrim" type="button" aria-label="Close navigation" tabindex="-1"></button>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Available for new projects</div>
+          <h1 id="hero-title">Watetera<br><span>Sadati.</span></h1>
+          <p class="hero-deck">I’m a full-stack developer and cybersecurity specialist. I develop software for automated systems, mobile applications, and production-grade web platforms, with security integrated from the frontend through the backend.</p>
+          <div class="hero-tags" aria-label="Areas of focus">
+            <span class="tag">Application engineering</span>
+            <span class="tag">Security</span>
+            <span class="tag">Infrastructure</span>
+          </div>
+          <div class="hero-actions">
+            <a class="button" href="#services">Explore services <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="mailto:wateterasadati@gmail.com?subject=Project%20enquiry">Discuss a project <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-index">01 / About</div>
+          <h2 class="section-title" id="about-title">Software and security, considered together.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>I'm <strong>Watetera Sadati</strong>, a developer and security specialist working across full-stack applications, databases, cloud systems, embedded devices, and networks.</p>
+            <p>I bring a security-minded perspective to software delivery: understand the system, test its assumptions, and make the important trade-offs visible. The goal is software that is clear to use and considered at every layer.</p>
+            <p>From application development to infrastructure and security review, I value practical solutions, careful engineering, and end-to-end ownership.</p>
+          </div>
+          <div class="principles" aria-label="How I work">
+            <article class="principle"><span class="principle-num">01</span><div><h3>Security from the start</h3><p>Think about risks during design, implementation, and deployment.</p></div></article>
+            <article class="principle"><span class="principle-num">02</span><div><h3>End-to-end responsibility</h3><p>Connect the interface, application, data, and infrastructure.</p></div></article>
+            <article class="principle"><span class="principle-num">03</span><div><h3>Curious by default</h3><p>Keep learning, test assumptions, and improve the details.</p></div></article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-index">02 / Expertise</div>
+          <h2 class="section-title" id="skills-title">Skills and tools.</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-meta"><span>01</span><span>Interface → application</span></div>
+            <h3>Product engineering</h3>
+            <p>Responsive experiences and reliable application services built around real use cases.</p>
+            <div class="skill-list">React · Next.js · TypeScript · Vue · Django · Python · Node.js · REST / GraphQL</div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-meta"><span>02</span><span>Assess → strengthen</span></div>
+            <h3>Application security</h3>
+            <p>Security testing and threat-aware engineering across application and delivery workflows.</p>
+            <div class="skill-list">Penetration testing · OWASP · Burp Suite · Metasploit · Threat modeling · SAST / DAST</div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-meta"><span>03</span><span>Data → platform</span></div>
+            <h3>Databases & cloud</h3>
+            <p>Data models, deployment foundations, and infrastructure designed to be operable.</p>
+            <div class="skill-list">PostgreSQL · MySQL · MongoDB · Redis · AWS · GCP · Azure · Docker · Terraform · CI/CD</div>
+          </article>
+          <article class="skill-card">
+            <div class="skill-meta"><span>04</span><span>Device → network</span></div>
+            <h3>Embedded & infrastructure</h3>
+            <p>Connected devices and networks, from firmware and protocols to administration.</p>
+            <div class="skill-list">C / C++ · Arduino · Raspberry Pi · RTOS · TCP/IP · VPN / VLAN · Linux · Networking</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-index">03 / Services</div>
+          <h2 class="section-title" id="services-title">Practical help for <em>complex work.</em></h2>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><span>01 / Build</span><span class="project-type">Product engineering</span></div>
+            <h3>Web applications</h3>
+            <p>Plan and build responsive web experiences, application backends, and APIs around your users and business requirements.</p>
+            <div class="project-foot"><div class="stack"><span>React</span><span>TypeScript</span><span>Django</span><span>Node.js</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>02 / Protect</span><span class="project-type">Security engineering</span></div>
+            <h3>Security reviews</h3>
+            <p>Assess application risks, explain findings in clear language, and help prioritize practical steps to reduce exposure.</p>
+            <div class="project-foot"><div class="stack"><span>OWASP</span><span>Threat modeling</span><span>Testing</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>03 / Scale</span><span class="project-type">Data & infrastructure</span></div>
+            <h3>Databases & cloud</h3>
+            <p>Design and improve data structures, deployment foundations, and cloud environments with maintainability in mind.</p>
+            <div class="project-foot"><div class="stack"><span>PostgreSQL</span><span>Docker</span><span>Terraform</span></div></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span>04 / Connect</span><span class="project-type">Embedded & networks</span></div>
+            <h3>Devices & infrastructure</h3>
+            <p>Work across firmware, device integration, and networking to connect physical systems with dependable software.</p>
+            <div class="project-foot"><div class="stack"><span>C / C++</span><span>IoT</span><span>TCP/IP</span></div></div>
+          </article>
+        </div>
+        <div class="process-grid" aria-label="How an engagement works">
+          <article class="process-step"><span>STEP 01</span><h3>Clarify the brief</h3><p>Discuss the goal, constraints, stakeholders, and what a useful outcome looks like.</p></article>
+          <article class="process-step"><span>STEP 02</span><h3>Agree the scope</h3><p>Set priorities, deliverables, and a realistic next step before work begins.</p></article>
+          <article class="process-step"><span>STEP 03</span><h3>Build & communicate</h3><p>Work through the agreed plan, share progress, and make decisions visible.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact-grid">
+        <div>
+          <div class="section-index">04 / Contact</div>
+          <h2 class="section-title" id="contact-title" style="margin-top:19px">Contact <em>Watetera.</em></h2>
+          <p class="contact-copy">For project enquiries, send a short note about the work, the support you need, and your preferred timing.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="https://github.com/ALSADAT89" target="_blank" rel="noopener noreferrer"><span class="contact-label">GitHub</span><span class="contact-value">github.com/ALSADAT89 ↗</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/watetera-sadati-b3b162227" target="_blank" rel="noopener noreferrer"><span class="contact-label">LinkedIn</span><span class="contact-value">Connect on LinkedIn ↗</span></a>
+            <a class="contact-link" href="https://x.com/watetera83100" target="_blank" rel="noopener noreferrer"><span class="contact-label">X / Twitter</span><span class="contact-value">@watetera83100 ↗</span></a>
+          </div>
+        </div>
+        <aside class="contact-card" aria-label="Direct contact">
+          <div class="eyebrow">Project enquiries</div>
+          <h3>Choose how to get in touch.</h3>
+          <p>Email is best for project details. WhatsApp works well for a quick message.</p>
+          <div class="contact-actions">
+            <a class="button" href="mailto:wateterasadati@gmail.com?subject=Project%20enquiry">Email Watetera <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="button secondary whatsapp-action" href="https://wa.me/256764413216" target="_blank" rel="noopener noreferrer" aria-label="Message 0764413216 on WhatsApp"><span><span class="whatsapp-icon" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.09 3.18 2 2 0 0 1 4.08 1h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.11L8.06 8.9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.84.58 2.8.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></span> WhatsApp · 0764413216</span><span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-row"><span>© <span id="year">2026</span> Watetera Sadati</span><span>Full-stack development · Cybersecurity · Systems</span><a href="#top">Back to top ↑</a></div>
+  </footer>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navLinks = document.querySelector('.nav-links');
+    const menuScrim = document.querySelector('.menu-scrim');
+    const closeButton = document.querySelector('.menu-close');
+    const firstNavLink = navLinks.querySelector('a');
+    function openMenu() {
+      menuButton.setAttribute('aria-expanded', 'true');
+      navLinks.classList.add('open');
+      navLinks.setAttribute('aria-hidden', 'false');
+      menuScrim.classList.add('open');
+      document.body.classList.add('menu-open');
+      firstNavLink.focus();
+    }
+    function closeMenu(restoreFocus = true) {
+      menuButton.setAttribute('aria-expanded', 'false');
+      navLinks.classList.remove('open');
+      navLinks.setAttribute('aria-hidden', 'true');
+      menuScrim.classList.remove('open');
+      document.body.classList.remove('menu-open');
+      if (restoreFocus) menuButton.focus();
+    }
+    menuButton.addEventListener('click', () => {
+      if (menuButton.getAttribute('aria-expanded') === 'true') closeMenu();
+      else openMenu();
+    });
+    closeButton.addEventListener('click', () => closeMenu());
+    menuScrim.addEventListener('click', () => closeMenu());
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') closeMenu();
+    });
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) closeMenu(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 640) {
+        if (menuButton.getAttribute('aria-expanded') === 'true') closeMenu(false);
+        navLinks.setAttribute('aria-hidden', 'false');
+      }
+    });
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
